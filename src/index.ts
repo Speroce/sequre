@@ -1,4 +1,5 @@
 import { app, BrowserWindow } from 'electron';
+import * as path from 'path'
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -14,15 +15,19 @@ const createWindow = () => {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    resizable: false,
-    maximizable: false
+    resizable: true,//false,
+    maximizable: true,//false
+    webPreferences: {
+        preload: path.join(__dirname, 'main.js'),
+        
+    }
   });
 
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname.replace('dist', 'public')}/index.html`);
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
   mainWindow.setMenuBarVisibility(false);
 
   // Emitted when the window is closed.
