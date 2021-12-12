@@ -15,21 +15,23 @@ const createWindow = () => {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    resizable: true,//false,
-    maximizable: true,//false
+    resizable: /* true,// */false,
+    maximizable: /* true,// */false,
     webPreferences: {
         preload: path.join(__dirname, 'main.js'),
         
     }
   });
 
-  // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname.replace('dist', 'public')}/index.html`);
 
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools();
-  mainWindow.setMenuBarVisibility(false);
 
+  mainWindow.setMenuBarVisibility(false);
+  /* mainWindow.webContents.openDevTools({
+    activate: false,
+    mode: 'detach'
+  }); */
+  
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
     // Dereference the window object, usually you would store windows

@@ -1,4 +1,4 @@
-import * as Vue from 'vue';
+import * as Vue from 'vue'
 
 document.addEventListener('DOMContentLoaded', () => {
     console.error('Шняга завелась');
